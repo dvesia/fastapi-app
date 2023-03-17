@@ -5,7 +5,6 @@ import pandas as pd
 import numpy as np
 from pandas.core.frame import DataFrame
 import pytest
-import src.common_functions
 from joblib import load
 
 

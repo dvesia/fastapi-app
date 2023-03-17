@@ -1,13 +1,30 @@
-params:
-  - core:
-      auto_dvc: true
-
 # DVC stages
 stages:
   clean_data:
     cmd: python src/basic_cleaning.py
     deps:
-    - data/raw/census.csv
-    - metadata.yaml
+      - data/raw/census.csv
+      - metadata.yaml
     outs:
-    - data/prepared/census.csv
+      - data/prepared/census.csv
+
+  train_model:
+    cmd: python src/train_model.py
+    deps:
+      - data/prepared/census.csv
+      - src/utils.py
+    outs:
+      - artifacts/models/model.joblib
+      - artifacts/models/encoder.joblib
+      - artifacts/models/lb.joblib
+
+  check_score:
+    cmd: python src/check_score.py
+    deps:
+      - data/prepared/census.csv
+      - artifacts/models/model.joblib
+      - artifacts/models/encoder.joblib
+      - artifacts/models/lb.joblib
+      - src/utils.py
+    outs:
+      - artifacts/slice_output.txt

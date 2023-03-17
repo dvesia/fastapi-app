@@ -6,4 +6,5 @@ jupyter
 jupyterlab
 fastapi
 uvicorn
-yaml
+pydantic
+httpx
