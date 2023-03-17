@@ -4,7 +4,7 @@ Check Score procedure
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from joblib import load
-from utils import get_cat_features, process_data, compute_model_metrics
+from src.utils import get_cat_features, process_data, compute_model_metrics
 import logging
 
 

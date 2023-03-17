@@ -6,7 +6,7 @@ import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from joblib import dump
-from utils import process_data, get_cat_features, train_model
+import utils
 
 
 def train_test_model():
@@ -15,13 +15,13 @@ def train_test_model():
     """
     os.makedirs("artifacts/models", exist_ok=True)
 
-    df = pd.read_csv("../data/prepared/census.csv")
+    df = pd.read_csv("data/prepared/census.csv")
     train, _ = train_test_split(df, test_size=0.20)
-    X_train, y_train, encoder, lb = process_data(
-        train, categorical_features=get_cat_features(),
+    X_train, y_train, encoder, lb = utils.process_data(
+        train, categorical_features= utils.get_cat_features(),
         label="salary", training=True
     )
-    trained_model = train_model(X_train, y_train)
+    trained_model = utils.train_model(X_train, y_train)
 
     dump(trained_model, "artifacts/models/model.joblib")
     dump(encoder, "artifacts/models/encoder.joblib")

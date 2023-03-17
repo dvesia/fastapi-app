@@ -4,7 +4,7 @@ from pydantic import BaseModel
 from typing import Literal
 from joblib import load
 from pandas.core.frame import DataFrame
-import utils
+from src import utils
 import numpy as np
 
 
@@ -64,9 +64,9 @@ async def get_items():
 
 @app.post("/")
 async def inference(user_data: User):
-    model = load("artifacts/models/model.joblib")
-    encoder = load("artifacts/models/encoder.joblib")
-    lb = load("artifacts/models/lb.joblib")
+    model = load("../artifacts/models/model.joblib")
+    encoder = load("../artifacts/models/encoder.joblib")
+    lb = load("../artifacts/models/lb.joblib")
 
     print(encoder)
 
