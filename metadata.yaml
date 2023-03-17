@@ -1,0 +1,5 @@
+columns_to_drop:
+  - "fnlgt"
+  - "education-num"
+  - "capital-gain"
+  - "capital-loss"

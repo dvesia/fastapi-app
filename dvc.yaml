@@ -1,0 +1,13 @@
+params:
+  - core:
+      auto_dvc: true
+
+# DVC stages
+stages:
+  clean_data:
+    cmd: python src/basic_cleaning.py
+    deps:
+    - data/raw/census.csv
+    - metadata.yaml
+    outs:
+    - data/prepared/census.csv
