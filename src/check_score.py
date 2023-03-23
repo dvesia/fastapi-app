@@ -4,7 +4,7 @@ Check Score procedure
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from joblib import load
-from src.utils import get_cat_features, process_data, compute_model_metrics
+from utils import get_cat_features, compute_model_metrics, process_data
 import logging
 
 
@@ -17,7 +17,7 @@ def check_score():
 
     trained_model = load("artifacts/models/model.joblib")
     encoder = load("artifacts/models/encoder.joblib")
-    lb = load("artifacts/models/lb.joblib")
+    lb = load("artifacts/models/label_binarizer.joblib")
 
     slice_values = []
 

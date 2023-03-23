@@ -16,7 +16,7 @@ stages:
     outs:
       - artifacts/models/model.joblib
       - artifacts/models/encoder.joblib
-      - artifacts/models/lb.joblib
+      - artifacts/models/label_binarizer.joblib
 
   check_score:
     cmd: python src/check_score.py
@@ -24,7 +24,7 @@ stages:
       - data/prepared/census.csv
       - artifacts/models/model.joblib
       - artifacts/models/encoder.joblib
-      - artifacts/models/lb.joblib
+      - artifacts/models/label_binarizer.joblib
       - src/utils.py
     outs:
       - artifacts/slice_output.txt

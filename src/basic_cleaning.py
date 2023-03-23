@@ -34,3 +34,7 @@ def execute_cleaning():
 
     # Save cleaned dataset to new CSV file
     df.to_csv("data/prepared/census.csv", index=False)
+
+
+if __name__ == "__main__":
+    execute_cleaning()

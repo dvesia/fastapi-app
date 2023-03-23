@@ -6,10 +6,9 @@ from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.model_selection import KFold, cross_val_score
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
-import pandas as pd
 
 
-def get_cat_features() -> List[str]:
+def get_cat_features():
     """Return feature categories"""
     return [
         "workclass",
@@ -122,7 +121,7 @@ def train_model(X_train, y_train):
     return model
 
 
-def train_model(X_train: np.ndarray, y_train: np.ndarray) -> GradientBoostingClassifier:
+def train_model(X_train: np.ndarray, y_train: np.ndarray):
     """Trains a machine learning model and returns it.
 
     Args:
@@ -164,7 +163,7 @@ def compute_model_metrics(y: np.array, preds: np.array) -> Tuple[float, float, f
     return precision, recall, fbeta
 
 
-def inference(model: Any, X: np.ndarray) -> np.ndarray:
+def inference(model: Any, X: np.ndarray):
     """ Run model inferences and return the predictions.
 
     Args:

@@ -6,6 +6,7 @@ from joblib import load
 from pandas.core.frame import DataFrame
 from src import utils
 import numpy as np
+import traceback
 
 
 class User(BaseModel):
@@ -64,41 +65,44 @@ async def get_items():
 
 @app.post("/")
 async def inference(user_data: User):
-    model = load("../artifacts/models/model.joblib")
-    encoder = load("../artifacts/models/encoder.joblib")
-    lb = load("../artifacts/models/lb.joblib")
+    try:
+        model = load("artifacts/models/model.joblib")
+        encoder = load("artifacts/models/encoder.joblib")
+        lb = load("artifacts/models/label_binarizer.joblib")
 
-    print(encoder)
+        array = np.array([[
+            user_data.age,
+            user_data.workclass,
+            user_data.education,
+            user_data.maritalStatus,
+            user_data.occupation,
+            user_data.relationship,
+            user_data.race,
+            user_data.sex,
+            user_data.hoursPerWeek,
+            user_data.nativeCountry
+        ]])
+        df_temp = DataFrame(data=array, columns=[
+            "age",
+            "workclass",
+            "education",
+            "marital-status",
+            "occupation",
+            "relationship",
+            "race",
+            "sex",
+            "hours-per-week",
+            "native-country",
+        ])
 
-    array = np.array([[
-                     user_data.age,
-                     user_data.workclass,
-                     user_data.education,
-                     user_data.maritalStatus,
-                     user_data.occupation,
-                     user_data.relationship,
-                     user_data.race,
-                     user_data.sex,
-                     user_data.hoursPerWeek,
-                     user_data.nativeCountry
-                     ]])
-    df_temp = DataFrame(data=array, columns=[
-        "age",
-        "workclass",
-        "education",
-        "marital-status",
-        "occupation",
-        "relationship",
-        "race",
-        "sex",
-        "hours-per-week",
-        "native-country",
-    ])
-
-    X, _, _, _ = utils.process_data(
-                df_temp,
-                categorical_features=utils.get_cat_features(),
-                encoder=encoder, lb=lb, training=False)
-    pred = utils.inference(model, X)
-    y = lb.inverse_transform(pred)[0]
-    return {"prediction": y}
+        X, _, _, _ = utils.process_data(
+            df_temp,
+            categorical_features=utils.get_cat_features(),
+            encoder=encoder, lb=lb, training=False)
+        pred = utils.inference(model, X)
+        y = lb.inverse_transform(pred)[0]
+        return {"prediction": y}
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+        print(traceback.format_exc())
+        raise e

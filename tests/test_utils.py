@@ -22,8 +22,8 @@ def test_process_data(data):
     """
     Check split have same number of rows for X and y
     """
-    encoder = load("artifacts/models/encoder.joblib")
-    lb = load("artifacts/models/lb.joblib")
+    encoder = load("../artifacts/models/encoder.joblib")
+    lb = load("../artifacts/models/label_binarizer.joblib")
 
     X_test, y_test, _, _ = utils.process_data(
         data,
@@ -32,13 +32,12 @@ def test_process_data(data):
 
     assert len(X_test) == len(y_test)
 
-
 def test_process_encoder(data):
     """
     Check split have same number of rows for X and y
     """
     encoder_test = load("artifacts/models/encoder.joblib")
-    lb_test = load("artifacts/models/lb.joblib")
+    lb_test = load("artifacts/models/label_binarizer.joblib")
 
     _, _, encoder, lb = utils.process_data(
         data,
@@ -60,7 +59,7 @@ def test_inference_above():
     """
     model = load("artifacts/models/model.joblib")
     encoder = load("artifacts/models/encoder.joblib")
-    lb = load("artifacts/models/lb.joblib")
+    lb = load("artifacts/models/label_binarizer.joblib")
 
     array = np.array([[
                      32,
@@ -101,7 +100,7 @@ def test_inference_below():
     """
     model = load("../artifacts/models/model.joblib")
     encoder = load("../artifacts/models/encoder.joblib")
-    lb = load("../artifacts/models/lb.joblib")
+    lb = load("../artifacts/models/label_binarizer.joblib")
 
     array = np.array([[
                      19,

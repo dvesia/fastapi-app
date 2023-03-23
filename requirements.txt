@@ -4,3 +4,4 @@ numpy
 fastapi
 uvicorn
 pytest
+joblib == 1.1.1
