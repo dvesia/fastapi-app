@@ -14,19 +14,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install DVC
+    - name: Set up DVC
       run: |
-        sudo apt-get update
-        pip install dvc
-
-    - name: Set up DVC remote storage
-      run: |
+        sudo apt-get install -y dvc
+        dvc remote add -d mybucket s3://fastapi-app-bucket/dvc-data/
         dvc remote modify mybucket --profile default --access-key ${{ env.AWS_ACCESS_KEY_ID }} --secret-key ${{ env.AWS_SECRET_ACCESS_KEY }}
 
     - name: Push data files to remote storage
       run: |
         dvc push
-
-    - name: Run DVC repro
-      run: |
-        dvc repro
