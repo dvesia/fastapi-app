@@ -16,6 +16,7 @@ jobs:
 
     - name: Install DVC
       run: |
+        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key EFFAF4443CE9AD84
         sudo apt-get update
         sudo apt-get install -y gnupg
         curl https://dvc.org/deb/dvc.pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/dvc.gpg > /dev/null
