@@ -21,7 +21,6 @@ jobs:
 
     - name: Set up DVC remote storage
       run: |
-        dvc remote add -d mybucket -f s3://fastapi-app-bucket/dvc-data/
         dvc remote modify mybucket --profile default --access-key ${{ env.AWS_ACCESS_KEY_ID }} --secret-key ${{ env.AWS_SECRET_ACCESS_KEY }}
 
     - name: Push data files to remote storage
