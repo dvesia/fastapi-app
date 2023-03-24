@@ -14,11 +14,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install dvc 
+
     - name: Set up DVC
       run: |
-        pip install dvc
-        dvc remote modify mybucket --profile default --access-key ${{ env.AWS_ACCESS_KEY_ID }} --secret-key ${{ env.AWS_SECRET_ACCESS_KEY }}
+        dvc remote add -d -f mybucket s3://fastapi-app-bucket/dvc-data/
 
-    - name: Push data files to remote storage
-      run: |
-        dvc push
