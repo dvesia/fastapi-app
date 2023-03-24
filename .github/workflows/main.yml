@@ -17,7 +17,7 @@ jobs:
     - name: Install DVC
       run: |
         sudo apt-get update
-        sudo apt-get install -y dvc
+        pip install dvc
 
     - name: Set up DVC remote storage
       run: |
