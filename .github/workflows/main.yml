@@ -14,15 +14,17 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install dependencies
+    - name: Install DVC
       run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install dvc
-
-    - name: Set up DVC
-      run: |
+        sudo apt-get update
+        sudo apt-get install -y gnupg
+        sudo curl https://dvc.org/deb/dvc.pub.gpg | sudo apt-key add -
+        sudo echo "deb https://dvc.org/deb/debian any main" | sudo tee /etc/apt/sources.list.d/dvc.list
+        sudo apt-get update
         sudo apt-get install -y dvc
+
+    - name: Set up DVC remote storage
+      run: |
         dvc remote add -d mybucket s3://fastapi-app-bucket/dvc-data/
         dvc remote modify mybucket --profile default --access-key ${{ env.AWS_ACCESS_KEY_ID }} --secret-key ${{ env.AWS_SECRET_ACCESS_KEY }}
 
