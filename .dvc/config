@@ -1,5 +1,7 @@
 [core]
-    remote = storage
+    remote = mybucket
     autostage = true
 ['remote "storage"']
     url = gdrive://1vUJIrJrMVFfbRuqf1BBA9Wfoa9UlrC-F?hl=it
+['remote "mybucket"']
+    url = s3://fastapi-app-bucket

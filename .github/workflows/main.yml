@@ -1,32 +1,35 @@
-name: Python Tests
+name: My Workflow
 
-on:
-  push:
-    branches: main
+on: [push]
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 jobs:
-  build:
-
+  myjob:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out repository
+    - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install dvc
 
-    - name: Run pytest
+    - name: Set up DVC
       run: |
-        pytest tests -v
+        sudo apt-get install -y dvc
+        dvc remote add -d mybucket s3://fastapi-app-bucket/dvc-data/
+        dvc remote modify mybucket --profile default --access-key ${{ env.AWS_ACCESS_KEY_ID }} --secret-key ${{ env.AWS_SECRET_ACCESS_KEY }}
 
-    - name: Run flake8
+    - name: Push data files to remote storage
       run: |
-        flake8
+        dvc push
+
+    - name: Run DVC repro
+      run: |
+        dvc repro
