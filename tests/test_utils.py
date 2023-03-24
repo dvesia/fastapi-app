@@ -14,7 +14,7 @@ def data():
     """
     Get dataset
     """
-    df = pd.read_csv("../data/prepared/census.csv")
+    df = pd.read_csv("data/prepared/census.csv")
     return df
 
 
@@ -22,8 +22,8 @@ def test_process_data(data):
     """
     Check split have same number of rows for X and y
     """
-    encoder = load("../artifacts/models/encoder.joblib")
-    lb = load("../artifacts/models/label_binarizer.joblib")
+    encoder = load("artifacts/models/encoder.joblib")
+    lb = load("artifacts/models/label_binarizer.joblib")
 
     X_test, y_test, _, _ = utils.process_data(
         data,
@@ -98,9 +98,9 @@ def test_inference_below():
     """
     Check inference performance
     """
-    model = load("../artifacts/models/model.joblib")
-    encoder = load("../artifacts/models/encoder.joblib")
-    lb = load("../artifacts/models/label_binarizer.joblib")
+    model = load("artifacts/models/model.joblib")
+    encoder = load("artifacts/models/encoder.joblib")
+    lb = load("artifacts/models/label_binarizer.joblib")
 
     array = np.array([[
                      19,
