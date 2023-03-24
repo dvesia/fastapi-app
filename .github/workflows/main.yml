@@ -18,7 +18,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y gnupg
-        sudo curl https://dvc.org/deb/dvc.pub.gpg | sudo apt-key add -
+        curl https://dvc.org/deb/dvc.pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/dvc.gpg > /dev/null
         sudo echo "deb https://dvc.org/deb/debian any main" | sudo tee /etc/apt/sources.list.d/dvc.list
         sudo apt-get update
         sudo apt-get install -y dvc
