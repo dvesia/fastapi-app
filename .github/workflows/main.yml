@@ -23,3 +23,7 @@ jobs:
       run: |
         dvc remote add -d -f mybucket s3://fastapi-app-bucket/dvc-data/
 
+    - name: Pull data
+      run: |
+        dvc pull
+
