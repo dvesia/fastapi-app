@@ -14,6 +14,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Install dvc
+      run: |
+        pip install dvc
+        
     - name: Pull raw data
       run: |
         dvc pull data/raw/census.csv.dvc
