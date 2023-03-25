@@ -21,8 +21,8 @@ jobs:
     - name: Pull raw data
       run: |
         dvc pull data/raw/census.csv.dvc
-    
-    - name: Print raw data folder content
+
+    - name: Reproduce pipe and push data
       run: |
-        ls data/raw/
- 
+        dvc repro
+        dvc push
