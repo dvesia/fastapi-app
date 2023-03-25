@@ -24,5 +24,4 @@ jobs:
 
     - name: Reproduce pipe and push data
       run: |
-        dvc repro -f
-        dvc push
+        dvc repro src/basic_cleaning.py src/train_model.py
