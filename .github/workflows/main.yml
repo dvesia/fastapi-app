@@ -16,7 +16,7 @@ jobs:
 
     - name: Install dvc
       run: |
-        pip install dvc dvc-s3
+        pip install -r requirements
         
     - name: Pull raw data
       run: |
