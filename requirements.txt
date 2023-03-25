@@ -7,4 +7,4 @@ pytest
 joblib == 1.1.1
 httpx
 PyYAML
-dvc_s3
+dvc-s3
