@@ -24,4 +24,12 @@ jobs:
 
     - name: Reproduce pipe and push data
       run: |
-        dvc repro src/basic_cleaning.py src/train_model.py
+        dvc repro -f
+        dvc push
+    
+    - name: Execute testing
+      run: |
+        pytest tests -v
+    
+    
+    
