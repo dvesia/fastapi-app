@@ -14,12 +14,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install dependencies
+    - name: Print workdir
       run: |
-        pip install -r requirements.txt
-        pip install dvc 
-
-    - name: Set up DVC
-      run: |
-        dvc remote add -d -f mybucket s3://fastapi-app-bucket/
-        dvc pull census.csv.dvc
+        pwd
