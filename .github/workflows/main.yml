@@ -26,6 +26,10 @@ jobs:
     - name: Reproduce Pipeline
       run: |
         dvc repro
+
+    - name: Push data
+      run: |
+        dvc push
         
     - name: Pull data
       run: |
