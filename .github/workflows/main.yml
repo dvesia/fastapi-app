@@ -16,4 +16,4 @@ jobs:
 
     - name: Print workdir
       run: |
-        pwd
+        ls -a
