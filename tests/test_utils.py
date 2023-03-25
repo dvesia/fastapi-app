@@ -62,13 +62,13 @@ def test_inference_above():
     lb = load("artifacts/models/label_binarizer.joblib")
 
     array = np.array([[
-                     32,
+                     35,
                      "Private",
                      "Some-college",
                      "Married-civ-spouse",
                      "Exec-managerial",
                      "Husband",
-                     "Black",
+                     "White",
                      "Male",
                      80,
                      "United-States"
