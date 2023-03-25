@@ -15,7 +15,7 @@ def train_test_model():
     """
     os.makedirs("../artifacts/models", exist_ok=True)
 
-    df = pd.read_csv("../data/prepared/census.csv")
+    df = pd.read_csv("data/prepared/census.csv")
 
     train, _ = train_test_split(df, test_size=0.20)
 
