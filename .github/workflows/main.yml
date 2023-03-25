@@ -21,17 +21,17 @@ jobs:
 
     - name: Set up DVC
       run: |
-        dvc remote add -d -f mybucket s3://fastapi-app-bucket/dvc-data/
+        dvc remote add -d -f mybucket s3://fastapi-app-bucket/
 
     - name: Reproduce Pipeline
       run: |
-        dvc repro
+        dvc pull
 
     - name: Push data
       run: |
-        dvc push
+        dvc repro
         
     - name: Pull data
       run: |
-        dvc pull
+        dvc push
 
