@@ -22,4 +22,4 @@ jobs:
     - name: Set up DVC
       run: |
         dvc remote add -d -f mybucket s3://fastapi-app-bucket/
-        dvc pull data/raw/census.csv.dvc
+        dvc pull census.csv
