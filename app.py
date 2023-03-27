@@ -1,7 +1,7 @@
 import os
 from fastapi import FastAPI
 from pydantic import BaseModel
-from typing import Literal
+from typing_extensions import Literal
 from joblib import load
 from pandas.core.frame import DataFrame
 from src import utils
