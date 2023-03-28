@@ -29,7 +29,7 @@ jobs:
     - name: Pull raw data
       run: |
         dvc pull data/raw/census.csv.dvc
-        dvc pull data/artifacts/model.joblib.dvc
+        dvc pull artifacts/model.joblib.dvc
 
     - name: Reproduce pipe and push data
       run: |
