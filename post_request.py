@@ -15,6 +15,6 @@ data = {
     "nativeCountry": "United-States"
 }
 
-response = requests.post(api_url, json=data)
+response = requests.post(api_url, json=data)  # Add json=data to send the data with the request
 print(response)
 print("Response content:", response.content)
