@@ -11,7 +11,8 @@ def data():
     """
     Get dataset
     """
-    df = pd.read_csv("data/raw/census.csv", skipinitialspace=True, na_values='?')
+    df = pd.read_csv("data/raw/census.csv",
+                     skipinitialspace=True, na_values='?')
     df = __clean_dataset(df)
     return df
 

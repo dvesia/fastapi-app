@@ -32,6 +32,7 @@ def test_process_data(data):
 
     assert len(X_test) == len(y_test)
 
+
 def test_process_encoder(data):
     """
     Check split have same number of rows for X and y
@@ -87,8 +88,8 @@ def test_inference_above():
     ])
 
     X, _, _, _ = utils.process_data(
-                df_temp, utils.get_cat_features(),
-                encoder=encoder, lb=lb, training=False)
+        df_temp, utils.get_cat_features(),
+        encoder=encoder, lb=lb, training=False)
     pred = utils.inference(model, X)
     y = lb.inverse_transform(pred)[0]
     assert y == ">50K"
@@ -128,9 +129,9 @@ def test_inference_below():
     ])
 
     X, _, _, _ = utils.process_data(
-                df_temp,
-                categorical_features=utils.get_cat_features(),
-                encoder=encoder, lb=lb, training=False)
+        df_temp,
+        categorical_features=utils.get_cat_features(),
+        encoder=encoder, lb=lb, training=False)
     pred = utils.inference(model, X)
     y = lb.inverse_transform(pred)[0]
     assert y == "<=50K"

@@ -21,10 +21,14 @@ def __clean_dataset(df):
 
 def execute_cleaning():
     """
-    Execute data cleaning by reading the raw data, cleaning it, and saving it to a new CSV file.
+    Execute data cleaning by reading the raw data,
+    cleaning it, and saving it to a new CSV file.
     """
     # Read raw data from CSV file
-    df = pd.read_csv("data/raw/census.csv", skipinitialspace=True, na_values='?')
+    df = pd.read_csv(
+        "data/raw/census.csv",
+        skipinitialspace=True,
+        na_values='?')
 
     # Clean the dataset
     df = __clean_dataset(df)
