@@ -142,13 +142,11 @@ class ModelInput(BaseModel):
                        'Local-gov',
                        'Self-emp-inc',
                        'Without-pay']
-    fnlgt: int
     education: Literal[
         'Bachelors', 'HS-grad', '11th', 'Masters', '9th',
         'Some-college',
         'Assoc-acdm', '7th-8th', 'Doctorate', 'Assoc-voc', 'Prof-school',
         '5th-6th', '10th', 'Preschool', '12th', '1st-4th']
-    education_num: int
     marital_status: Literal["Never-married",
                             "Married-civ-spouse",
                             "Divorced",
@@ -175,8 +173,6 @@ class ModelInput(BaseModel):
     race: Literal["White", "Asian-Pac-Islander",
                   "Amer-Indian-Eskimo", "Other", "Black"]
     sex: Literal["Female", "Male"]
-    capital_gain: int
-    capital_loss: int
     hours_per_week: int
     native_country: Literal[
         'United-States', 'Cuba', 'Jamaica', 'India', 'Mexico',
