@@ -5,8 +5,8 @@ on:
     branches: [ main ]
 
 env:
-  RENDER_ACCOUNT_ID: <your_render_account_id>
-  RENDER_APP_NAME: <your_render_app_name>
+  RENDER_ACCOUNT_ID: Domenico Vesia
+  RENDER_APP_NAME: fastapi-app-dvesia
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
