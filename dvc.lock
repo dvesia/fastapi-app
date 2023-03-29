@@ -20,8 +20,8 @@ stages:
       md5: 2446793aa822b145867de72dbe24bd28
       size: 2882004
     - path: src/utils.py
-      md5: c74985438d6752a6efc9b7f81989ef3c
-      size: 5370
+      md5: d0943973374319fefc3c7602e0444cdb
+      size: 4729
     outs:
     - path: artifacts/models/encoder.joblib
       md5: e556b5ac987cdca09105ddc3c65c43b6
@@ -30,8 +30,8 @@ stages:
       md5: 6648272f129eeb1e94cc88dfd7b13361
       size: 300
     - path: artifacts/models/model.joblib
-      md5: d5bf89c2b1bef67d2927f79268ed107e
-      size: 61748
+      md5: acd7c8dcc854782cbc43a812b776b445
+      size: 61694
   check_score:
     cmd: python src/check_score.py
     deps:
@@ -42,15 +42,15 @@ stages:
       md5: 6648272f129eeb1e94cc88dfd7b13361
       size: 300
     - path: artifacts/models/model.joblib
-      md5: d5bf89c2b1bef67d2927f79268ed107e
-      size: 61748
+      md5: acd7c8dcc854782cbc43a812b776b445
+      size: 61694
     - path: data/prepared/census.csv
       md5: 2446793aa822b145867de72dbe24bd28
       size: 2882004
     - path: src/utils.py
-      md5: c74985438d6752a6efc9b7f81989ef3c
-      size: 5370
+      md5: d0943973374319fefc3c7602e0444cdb
+      size: 4729
     outs:
     - path: artifacts/slice_output.txt
-      md5: e2cf4213fcf59a54bce3ce26490930fd
-      size: 8374
+      md5: 49b15f100c4f5f5b57c3dcf7b83e0113
+      size: 8344
