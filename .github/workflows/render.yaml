@@ -1,8 +1,26 @@
-services:
-  - type: web
-    name: fastapi-app
-    env: python
-    buildCommand: |
-      pip install -r requirements.txt
-    startCommand: uvicorn app:app --host 0.0.0.0 --port 10000
-    autoDeploy: true
+name: Render Deployment
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  RENDER_ACCOUNT_ID: <your_render_account_id>
+  RENDER_APP_NAME: <your_render_app_name>
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy to Render
+        uses: renderinc/render-deploy-github-action@1.1.1
+        with:
+          render_account_id: ${{ env.RENDER_ACCOUNT_ID }}
+          render_app_name: ${{ env.RENDER_APP_NAME }}
+          env_vars: |
+            AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}
