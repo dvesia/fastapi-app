@@ -225,23 +225,18 @@ async def predict(input: ModelInput):
     input_data = np.array([[
         input.age,
         input.workclass,
-        input.fnlgt,
         input.education,
-        input.education_num,
         input.marital_status,
         input.occupation,
         input.relationship,
         input.race,
         input.sex,
-        input.capital_gain,
-        input.capital_loss,
         input.hours_per_week,
         input.native_country]])
 
     original_cols = [
         "age",
         "workclass",
-        "fnlwgt",
         "education",
         "education_num",
         "marital-status",
@@ -249,8 +244,6 @@ async def predict(input: ModelInput):
         "relationship",
         "race",
         "sex",
-        "capital_gain",
-        "capital_loss",
         "hours-per-week",
         "native-country"]
 
