@@ -4,15 +4,19 @@ on:
   push:
     branches:
       - main
-  
+
+env:
+  RENDER_SERVICE_ID: ${{secrets.RENDER_SERVICE_ID}}
+  RENDER_API_KEY: ${{secrets.RENDER_API_KEY}}
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Render Deployment
-        uses: sws2apps/render-deployment@v1.2.0
-        with:
-          serviceId: ${{ secrets.RENDER_ACCOUNT_ID }}
-          apiKey: ${{ secrets.RENDER_API_KEY }}
+    - name: Checkout the repo
+      uses: actions/checkout@v2
+    - name: Render Deployment
+      uses: sws2apps/render-deployment@v1.2.0
+      with:
+        serviceId: ${{ env.RENDER_SERVICE_ID }}
+        apiKey: ${{ env.RENDER_API_KEY }}
