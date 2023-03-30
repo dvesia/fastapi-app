@@ -1,9 +1,10 @@
 name: Render Deployment
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["My Workflow"]
+    types:
+      - completed
 
 env:
   RENDER_SERVICE_ID: ${{secrets.RENDER_SERVICE_ID}}
