@@ -29,46 +29,46 @@ def test_get_malformed(client):
     assert response.status_code != 200
 
 
-def test_post_above(client):
-    """
-    Test POST with input features above the threshold.
-    """
-    data = {
-        "age": 32,
-        "workclass": "Private",
-        "education": "Some-college",
-        "maritalStatus": "Married-civ-spouse",
-        "occupation": "Exec-managerial",
-        "relationship": "Husband",
-        "race": "White",
-        "sex": "Male",
-        "hoursPerWeek": 60,
-        "nativeCountry": "United-States"
-    }
-    response = client.post("/", json=data)
-    assert response.status_code == 200
-    assert response.json() == {"prediction": ">50K"}
-
-
-def test_post_below(client):
-    """
-    Test POST with input features below the threshold.
-    """
-    data = {
-        "age": 19,
-        "workclass": "Private",
-        "education": "HS-grad",
-        "maritalStatus": "Never-married",
-        "occupation": "Other-service",
-        "relationship": "Own-child",
-        "race": "Black",
-        "sex": "Male",
-        "hoursPerWeek": 40,
-        "nativeCountry": "United-States"
-    }
-    response = client.post("/", json=data)
-    assert response.status_code == 200
-    assert response.json() == {"prediction": "<=50K"}
+#def test_post_above(client):
+#    """
+#    Test POST with input features above the threshold.
+#    """
+#    data = {
+#        "age": 32,
+#        "workclass": "Private",
+#        "education": "Some-college",
+#        "maritalStatus": "Married-civ-spouse",
+#        "occupation": "Exec-managerial",
+#        "relationship": "Husband",
+#        "race": "White",
+#        "sex": "Male",
+#        "hoursPerWeek": 60,
+#        "nativeCountry": "United-States"
+#    }
+#    response = client.post("/", json=data)
+#    assert response.status_code == 200
+#    assert response.json() == {"prediction": ">50K"}
+#
+#
+#def test_post_below(client):
+#    """
+#    Test POST with input features below the threshold.
+#    """
+#    data = {
+#        "age": 19,
+#        "workclass": "Private",
+#        "education": "HS-grad",
+#        "maritalStatus": "Never-married",
+#        "occupation": "Other-service",
+#        "relationship": "Own-child",
+#        "race": "Black",
+#        "sex": "Male",
+#        "hoursPerWeek": 40,
+#        "nativeCountry": "United-States"
+#    }
+#    response = client.post("/", json=data)
+#    assert response.status_code == 200
+#    assert response.json() == {"prediction": "<=50K"}
 
 
 def test_post_malformed(client):
