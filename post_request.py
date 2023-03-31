@@ -2,6 +2,7 @@ import requests
 
 api_url = "https://fastapi-app-dvesia.onrender.com"
 
+
 data = {
     "age": 19,
     "workclass": "Private",
