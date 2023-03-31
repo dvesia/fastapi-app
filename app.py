@@ -10,7 +10,6 @@ import traceback
 import dvc.api
 import joblib
 
-
 class User(BaseModel):
     age: int
     workclass: Literal[
@@ -151,7 +150,7 @@ async def inference(user_data: User):
         with dvc.api.open("artifacts/models/model.joblib", repo='.') as f:
             model = joblib.load(f)
 
-        # model = load("artifacts/models/model.joblib")
+        model = load("artifacts/models/model.joblib")
         encoder = load("artifacts/models/encoder.joblib")
         lb = load("artifacts/models/label_binarizer.joblib")
 
