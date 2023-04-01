@@ -148,9 +148,6 @@ async def get_items():
 async def inference(user_data: User):
     try:
 
-        with dvc.api.open("artifacts/models/model.joblib", repo='.') as f:
-            model = joblib.load(f)
-
         model = load("artifacts/models/model.joblib")
         encoder = load("artifacts/models/encoder.joblib")
         lb = load("artifacts/models/label_binarizer.joblib")
