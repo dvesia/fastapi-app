@@ -7,8 +7,6 @@ from pandas.core.frame import DataFrame
 from src import utils
 import numpy as np
 import traceback
-import dvc.api
-import joblib
 
 
 class User(BaseModel):
