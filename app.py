@@ -7,8 +7,6 @@ from pandas.core.frame import DataFrame
 from src import utils
 import numpy as np
 import traceback
-import dvc.api
-import joblib
 
 
 class User(BaseModel):
@@ -148,9 +146,9 @@ async def get_items():
 async def inference(user_data: User):
     try:
 
-        model = load("artifacts/models/model.joblib")
-        encoder = load("artifacts/models/encoder.joblib")
-        lb = load("artifacts/models/label_binarizer.joblib")
+        model = load("/Users/dvesia/PycharmProjects/fastapi-deployment/artifacts/models/model.joblib")
+        encoder = load("/Users/dvesia/PycharmProjects/fastapi-deployment/artifacts/models/encoder.joblib")
+        lb = load("/Users/dvesia/PycharmProjects/fastapi-deployment/artifacts/models/label_binarizer.joblib")
 
         array = np.array([[
             user_data.age,
