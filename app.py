@@ -10,6 +10,7 @@ import traceback
 import dvc.api
 import joblib
 
+
 class User(BaseModel):
     age: int
     workclass: Literal[
