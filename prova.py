@@ -1,6 +1,9 @@
-if __name__ == "__main__":
+if __name__ == '__main__':
     import dvc.api
-    import joblib
+    from joblib import load
 
-    with dvc.api.open('/Users/dvesia/PycharmProjects/fastapi-deployment/artifacts/models/model.joblib', repo='.') as f:
-        print(f)
+    with dvc.api.open(
+            'model.joblib',
+            mode='rb',
+            remote='mybucket') as f:
+        model = load(f)

@@ -145,10 +145,15 @@ async def get_items():
 @app.post("/")
 async def inference(user_data: User):
     try:
-
-        model = load("/Users/dvesia/PycharmProjects/fastapi-deployment/artifacts/models/model.joblib")
-        encoder = load("/Users/dvesia/PycharmProjects/fastapi-deployment/artifacts/models/encoder.joblib")
-        lb = load("/Users/dvesia/PycharmProjects/fastapi-deployment/artifacts/models/label_binarizer.joblib")
+        model = load(
+            "s3://fastapi-app-bucket/artifacts/models/model.joblib"
+        )
+        encoder = load(
+            "s3://fastapi-app-bucket/artifacts/models/encoder.joblib"
+        )
+        lb = load(
+            "s3://fastapi-app-bucket/artifacts/models/label_binarizer.joblib"
+        )
 
         array = np.array([[
             user_data.age,
